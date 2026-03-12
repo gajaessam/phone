@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>따르릉 📞 - 전화기 학습 사이트</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <h1 class="main-title" id="mainTitle">따르릉 📞</h1>
+
+        <button id="backToAdminBtn" class="back-to-admin-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            설정으로 돌아가기
+        </button>
+
+        <!-- Landing (Instruction) Interface -->
+        <section id="landingSection" class="section active">
+            <div class="guide-card">
+                <div class="guide-title">📖 사용 설명서</div>
+                <ul class="guide-list">
+                    <li class="guide-item"><span class="guide-num">1</span> <span class="guide-text"><b>번호 설정:</b> 학생이 입력해야 하는 정답번호를 입력하세요.</span></li>
+                    <li class="guide-item"><span class="guide-num">2</span> <span class="guide-text"><b>메시지 설정:</b> 정답 시 나타날 랜덤 베시지를 추가하세요.</span></li>
+                    <li class="guide-item"><span class="guide-num">3</span> <span class="guide-text"><b>시작:</b> 설정 완료 후 '시작하기' 버튼을 눌러주세요.</span></li>
+                </ul>
+            </div>
+            <button type="button" id="goToAdminBtn" class="primary-btn btn-start">설정하러 가기</button>
+        </section>
+
+        <!-- Admin Interface -->
+        <section id="adminSection" class="section">
+            <div class="admin-mode-label">⚙️ 관리자 설정 모드</div>
+            <div class="admin-card">
+                <div class="input-group">
+                    <label class="input-label">정답 전화번호 설정</label>
+                    <div class="password-input-container">
+                        <input type="text" id="correctNumber" class="styled-input" placeholder="010-0000-0000" maxlength="13">
+                        <button type="button" id="toggleVisibility" class="toggle-visibility">👁️</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">성공 시 메시지 목록</label>
+                    <div class="add-message-group">
+                        <input type="text" id="newMessage" class="styled-input" placeholder="메시지 입력..." style="padding: 12px 16px;">
+                        <button type="button" id="addMessageBtn" class="primary-btn" style="width: 80px; padding: 0; background: var(--ios-green); color: white;">추가</button>
+                    </div>
+                    <div id="messageList" class="message-list-container">
+                        <!-- Messages added here -->
+                    </div>
+                </div>
+
+                <button type="button" id="startStudentMode" class="primary-btn btn-start">학생 화면 시작하기</button>
+            </div>
+        </section>
+
+        <!-- Student Dialer Interface -->
+        <section id="studentSection" class="section">
+            <div class="iphone-frame">
+                <div class="status-bar">
+                    <span id="currentTime">12:34</span>
+                    <div class="status-right">
+                        <svg class="status-icon" width="17" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                        <svg class="status-icon" width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 12c-.6 0-1.1-.2-1.5-.6L0 4.8C.7 4 3.7 1.5 8 1.5s7.3 2.5 8 3.3l-6.5 6.6c-.4.4-.9.6-1.5.6z"/></svg>
+                        <svg class="status-icon" width="22" height="11" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="18" height="10" rx="2"/><path d="M21 4v4" stroke-linecap="round"/><rect x="3" y="3" width="13" height="6" rx="1" fill="currentColor"/></svg>
+                    </div>
+                </div>
+
+                <div class="dialer-display">
+                    <div id="dialedNumber" class="phone-number"></div>
+                </div>
+
+                <div class="dialer-keypad">
+                    <div class="key" data-key="1"><span class="key-num">1</span><span class="key-sub"> </span></div>
+                    <div class="key" data-key="2"><span class="key-num">2</span><span class="key-sub">ABC</span></div>
+                    <div class="key" data-key="3"><span class="key-num">3</span><span class="key-sub">DEF</span></div>
+                    <div class="key" data-key="4"><span class="key-num">4</span><span class="key-sub">GHI</span></div>
+                    <div class="key" data-key="5"><span class="key-num">5</span><span class="key-sub">JKL</span></div>
+                    <div class="key" data-key="6"><span class="key-num">6</span><span class="key-sub">MNO</span></div>
+                    <div class="key" data-key="7"><span class="key-num">7</span><span class="key-sub">PQRS</span></div>
+                    <div class="key" data-key="8"><span class="key-num">8</span><span class="key-sub">TUV</span></div>
+                    <div class="key" data-key="9"><span class="key-num">9</span><span class="key-sub">WXYZ</span></div>
+                    <div class="key" data-key="*"><span class="key-num" style="font-size: 2.5rem; margin-top: 10px;">*</span></div>
+                    <div class="key" data-key="0"><span class="key-num">0</span><span class="key-sub">+</span></div>
+                    <div class="key" data-key="#"><span class="key-num">#</span></div>
+                </div>
+
+                <div class="bottom-controls">
+                    <div></div>
+                    <div id="callBtn" class="call-btn">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                            <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/>
+                        </svg>
+                    </div>
+                    <div id="backspaceBtn" class="backspace-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 12.59L17.59 17 14.5 13.91 11.41 17 10 15.59 13.09 12.5 10 9.41 11.41 8 14.5 11.09 17.59 8 19 9.41 15.91 12.5 19 15.59z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Overlay Screens -->
+                <div id="connectingOverlay" class="fullscreen-overlay">
+                    <div class="caller-info">
+                        <div class="avatar">👤</div>
+                        <div class="caller-name">따르릉</div>
+                        <div id="callStatus" class="call-status">연결 중...</div>
+                    </div>
+                    <div id="endCallBtn" class="end-call-btn">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div id="successOverlay" class="message-overlay">
+                    <div class="caller-info">
+                        <div class="caller-name" style="color: white;">따르릉</div>
+                        <div id="callTimer" class="call-timer">00:01</div>
+                    </div>
+                    
+                    <div class="incall-message-container">
+                        <div id="incallMessage" class="incall-message">메시지</div>
+                        
+                        <div class="waveform">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+
+                    <div id="exitSuccess" class="end-call-btn">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <span>ⓒ 가재쌤</span>
+            <span class="footer-divider">|</span>
+            <a href="https://blog.naver.com/gajae_ssam" target="_blank" class="footer-link">수업 자료 공유</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
