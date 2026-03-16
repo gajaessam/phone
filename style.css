@@ -348,7 +348,7 @@ h1.main-title {
 
 /* Footer Styling */
 .app-footer {
-    display: none; /* 기본적으로 숨김 */
+    display: flex; /* 기본적으로 표시 (랜딩, 관리자 페이지) */
     position: fixed;
     bottom: 30px;
     align-items: center;
@@ -358,9 +358,9 @@ h1.main-title {
     z-index: 10;
 }
 
-/* 관리자 설정 섹션이 활성화되었을 때만 표시 */
-#adminSection.active ~ .app-footer {
-    display: flex;
+/* 학생 화면이 활성화되면 출처를 즉시 숨김 */
+#studentSection.active ~ .app-footer {
+    display: none !important;
 }
 
 .footer-divider {
