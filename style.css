@@ -348,13 +348,19 @@ h1.main-title {
 
 /* Footer Styling */
 .app-footer {
+    display: none; /* 기본적으로 숨김 */
     position: fixed;
     bottom: 30px;
-    display: flex;
     align-items: center;
     gap: 10px;
     color: #8E8E93;
     font-size: 14px;
+    z-index: 10;
+}
+
+/* 관리자 설정 섹션이 활성화되었을 때만 표시 */
+#adminSection.active ~ .app-footer {
+    display: flex;
 }
 
 .footer-divider {
